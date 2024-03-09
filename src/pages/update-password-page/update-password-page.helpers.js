@@ -1,12 +1,12 @@
 import Handlebars from "handlebars";
-
-Handlebars.registerHelper("profile-fields", () => {
+Handlebars.registerHelper("update-password-fields", () => {
   return [
-    { name: "email", title: "Почта", value: "pochta@yandex.ru" },
-    { name: "login", title: "Логин", value: "ivanivanov" },
-    { name: "first_name", title: "Имя", value: "Иван" },
-    { name: "second_name", title: "Фамилия", value: "Иванов" },
-    { name: "display_name", title: "Имя в чате", value: "Иван" },
-    { name: "phone", title: "Телефон", value: "+7 (909) 967 30 30" },
+    { name: "oldPassword", title: "Старый пароль", value: "•••••••••" },
+    { name: "newPassword", title: "Новый пароль", value: "•••••••••" },
+    {
+      name: "newPassword",
+      title: "Повторите новый пароль",
+      value: "•••••••••",
+    },
   ];
 });

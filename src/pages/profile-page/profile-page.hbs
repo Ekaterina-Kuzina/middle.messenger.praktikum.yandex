@@ -1,3 +1,8 @@
 <div>
-  chat
+    <img src="assets/avatar.png" alt="Avatar" class="avatar">
+    {{#each (profile-fields)}}
+        {{> Input readonly="readonly" lableLeft="true"}}
+    {{/each}}
+    {{> Link text="Изменить пароль" page="updatePassword"}}
+    {{> Link text="Выйти" page="login"}}
 </div>

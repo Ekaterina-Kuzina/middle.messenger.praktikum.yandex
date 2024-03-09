@@ -1,12 +1,4 @@
 <div class="input{{#if className}} {{className}}{{/if}}">
-    {{#unless readonly}}
-        <div class="input__title">{{ title }}</div>
-    {{/unless}}
-    {{#if readonly}}
-        <label for="{{ name }}">Choose a username: </label>
-        <input name="{{ name }}" value="{{ value }}" readonly>
-        <img src = "assets/icon.svg" alt="My Happy SVG"/>
-    {{else}}
-        <input class="input__field" name="{{ name }}" value="{{ value }}">
-    {{/if}}
+    <label for="{{ name }}" class="{{#unless lableLeft}}input__title{{/unless}}">{{ title }}</label>
+    <input name="{{ name }}" value="{{ value }}" {{isReadonly readonly}} class="{{#unless lableLeft}}input__field{{/unless}}">
 </div>
