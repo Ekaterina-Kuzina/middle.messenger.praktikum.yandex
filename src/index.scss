@@ -1,0 +1,43 @@
+@import "./assets/variables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: $font-regular;
+  background-color: $text-bgcolor;
+  color: $text-color;
+}
+
+h1,
+p,
+input {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+button {
+  font-size: inherit;
+  line-height: inherit;
+}

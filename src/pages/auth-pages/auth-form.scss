@@ -1,0 +1,39 @@
+@import "../../assets/variables";
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  min-height: 450px;
+
+  &__title {
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+  }
+
+  &__input {
+    margin-top: 16px;
+  }
+
+  &__btn {
+    color: $text-bgcolor;
+    background-color: $link-color;
+  }
+
+  &__footer {
+    margin-top: 47px;
+  }
+
+  &__link {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+  }
+}
