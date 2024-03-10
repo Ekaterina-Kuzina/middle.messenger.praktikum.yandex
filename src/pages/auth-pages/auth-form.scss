@@ -3,7 +3,6 @@
 .auth-form {
   display: flex;
   flex-direction: column;
-  width: 340px;
   min-height: 450px;
 
   &__title {
@@ -20,11 +19,6 @@
 
   &__input {
     margin-top: 16px;
-  }
-
-  &__btn {
-    color: $text-bgcolor;
-    background-color: $link-color;
   }
 
   &__footer {

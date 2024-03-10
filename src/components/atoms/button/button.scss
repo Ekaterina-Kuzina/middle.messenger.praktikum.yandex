@@ -1,3 +1,5 @@
+@import "../../../assets/variables";
+
 .button {
   height: 40px;
   width: 100%;
@@ -5,4 +7,6 @@
   border-radius: 8px;
   border: 0;
   cursor: pointer;
+  color: $text-bgcolor;
+  background-color: $link-color;
 }

@@ -15,3 +15,11 @@ $text-color: #1e1e1e;
 $text-light-color: #999;
 
 $link-color: #3369f3;
+$red-link: #ff0000;
+
+%flex-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

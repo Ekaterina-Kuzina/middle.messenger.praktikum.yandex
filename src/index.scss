@@ -11,15 +11,6 @@ body {
   height: 100%;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: $font-regular;
-  background-color: $text-bgcolor;
-  color: $text-color;
-}
-
 h1,
 p,
 input {

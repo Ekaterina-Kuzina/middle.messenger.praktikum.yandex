@@ -1,9 +1,7 @@
 @import "../../assets/variables.scss";
 
 .error-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-wrapper;
   flex-direction: column;
   font: $font-huge;
 }

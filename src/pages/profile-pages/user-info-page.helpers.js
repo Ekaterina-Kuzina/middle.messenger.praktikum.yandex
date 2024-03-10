@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 
-Handlebars.registerHelper("profile-fields", () => {
+Handlebars.registerHelper("userInfo-fields", () => {
   return [
     { name: "email", title: "Почта", value: "pochta@yandex.ru" },
     { name: "login", title: "Логин", value: "ivanivanov" },

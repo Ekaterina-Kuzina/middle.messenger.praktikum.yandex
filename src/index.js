@@ -8,8 +8,9 @@ const pages = {
   signin: [Pages.SigninPage],
   404: [Pages.Page404],
   500: [Pages.Page500],
-  profile: [Pages.ProfilePage],
+  userInfo: [Pages.UserInfoPage],
   updatePassword: [Pages.UpdatePasswordPage],
+  updateInfo: [Pages.UpdateInfoPage],
 };
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -22,7 +23,7 @@ function navigate(page) {
   document.body.innerHTML = handlebarsFunct(args);
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate("login"));
+document.addEventListener("DOMContentLoaded", () => navigate("updatePassword"));
 
 document.addEventListener("click", (e) => {
   const page = e.target.getAttribute("page");
