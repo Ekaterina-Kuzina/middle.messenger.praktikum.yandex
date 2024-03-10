@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "build": "build",
     "start": "vite build && node server.cjs",
     "preview": "vite preview"
   },
