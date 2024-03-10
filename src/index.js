@@ -23,7 +23,7 @@ function navigate(page) {
   document.body.innerHTML = handlebarsFunct(args);
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate("updatePassword"));
+document.addEventListener("DOMContentLoaded", () => navigate("login"));
 
 document.addEventListener("click", (e) => {
   const page = e.target.getAttribute("page");
