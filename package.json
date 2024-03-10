@@ -8,9 +8,8 @@
     "npm": ">=9.5"
   },
   "scripts": {
-    "node": "node server.cjs",
     "dev": "vite",
-    "start": "vite build",
+    "start": "vite build && node server.cjs",
     "preview": "vite preview"
   },
   "devDependencies": {
