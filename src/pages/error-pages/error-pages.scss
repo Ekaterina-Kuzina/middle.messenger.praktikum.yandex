@@ -1,0 +1,16 @@
+@import "../../assets/variables.scss";
+
+.error-page {
+  @extend %flex-wrapper;
+  flex-direction: column;
+  font: $font-huge;
+}
+
+.error-title {
+  margin-top: 20px;
+}
+
+.error-link {
+  margin-top: 70px;
+  font: $font-small;
+}
