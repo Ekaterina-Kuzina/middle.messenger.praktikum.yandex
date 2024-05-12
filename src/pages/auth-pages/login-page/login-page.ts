@@ -1,0 +1,15 @@
+export const LoginPage = `
+{{#> Dialog }}
+<form class="auth-form">
+  {{> Title text="Вход" className="auth-form__title"}}
+  <div class="auth-form__inputs">
+    {{#each (login-inputs)}}
+    {{> Input }}
+    {{/each}}
+  </div>
+  <div class="auth-form__footer">
+    {{> Button text="Авторизоваться" page="chat"}}
+    {{> Link text="Нет аккаунта?" page="signin" className="auth-form__link" }}
+  </div>
+</form>
+{{/ Dialog }}`;
