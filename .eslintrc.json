@@ -1,5 +1,6 @@
 {
   "extends": "airbnb",
+  "plugins": ["import"],
   "rules": {
     "max-len": [2, 100],
     "max-params": [2, 3],
@@ -13,15 +14,17 @@
         "tsx": "never"
       }
     ],
-    "import/prefer-default-export": "off",
-    "noImplicitAny": false
+    "import/prefer-default-export": "off"
   },
   "parserOptions": {
+    "parser": "@babel/eslint-parser",
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "env": {
-    "es6": true
+    "es6": true,
+    "browser": true,
+    "node": true
   },
   "settings": {
     "import/resolver": {
