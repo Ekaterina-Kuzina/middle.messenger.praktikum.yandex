@@ -1,0 +1,1 @@
+export { UpdateInfoPage } from './UpdateInfoPage';

@@ -1,2 +1,4 @@
 export { EventBus } from './EventBus';
 export { Block } from './Block';
+export { HTTPTransport } from './HTTPTransport';
+export { validate } from './validates.ts';

@@ -1,0 +1,10 @@
+@import '../../assets/variables';
+
+.chat-container {
+  display: flex;
+
+  &__chat-view {
+    display: flex;
+    width: 100%;
+  }
+}

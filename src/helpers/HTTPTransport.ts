@@ -10,6 +10,7 @@ type Options = {
   timeout?: number;
   headers?: string;
   retries?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any;
 };
 
@@ -44,7 +45,7 @@ function queryStringify(data: Record<string, any>) {
   return params.length ? `?${params.join('&')}` : '';
 }
 
-class HTTPTransport {
+export class HTTPTransport {
   get: HTTPMethod = (url, options = {}) => {
     return this.request(
       url,
@@ -109,5 +110,3 @@ class HTTPTransport {
     });
   }
 }
-
-export default HTTPTransport;

@@ -1,5 +1,0 @@
-export const Dialog = `<main class="dialog-wrapper">
-    <div class="dialog">
-        {{> @partial-block }}
-    </div>
-</main>`;
