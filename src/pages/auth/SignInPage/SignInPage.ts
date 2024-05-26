@@ -1,7 +1,6 @@
 import { Block } from '../../../helpers';
 import { Button, Input, Link, Title } from '../../../components';
-
-// import {navigate} from "../../../helpers/navigate";
+import { navigate } from '../../../helpers/navigate.ts';
 
 export class SignInPage extends Block {
   constructor() {
@@ -12,47 +11,55 @@ export class SignInPage extends Block {
       }),
       EmailInput: new Input({
         name: 'email',
-        title: 'Почта',
+        label: 'Почта',
         value: '',
         labelLeft: false,
+        type: 'email',
       }),
       LoginInput: new Input({
         name: 'login',
-        title: 'Логин',
+        label: 'Логин',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       FirstName: new Input({
         name: 'first_name',
-        title: 'Имя',
+        label: 'Имя',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       SecondName: new Input({
         name: 'second_name',
-        title: 'Фамилия',
+        label: 'Фамилия',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       Phone: new Input({
         name: 'phone',
-        title: 'Телефон',
+        label: 'Телефон',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       Password: new Input({
         name: 'password',
-        title: 'Пароль',
+        label: 'Пароль',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       RepeatedPasswordInput: new Input({
         name: 'password',
-        title: 'Пароль (еще раз)',
+        label: 'Пароль (еще раз)',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       Button: new Button({
+        type: 'submit',
         text: 'Зарегистрироваться',
         page: 'chat',
       }),
@@ -61,42 +68,44 @@ export class SignInPage extends Block {
         page: 'login',
         className: 'auth-form__link',
       }),
-      // events: {
-      //     submit: (e: Event) => {
-      //         this.handleSubmit(e);
-      //     },
-      // },
+      events: {
+        submit: (e: Event) => {
+          this.handleSubmit(e);
+        },
+      },
     });
   }
-  // handleSubmit = (event: Event) => {
-  //     event.preventDefault();
-  //     const form = event.target as HTMLFormElement;
-  //     let isValid = true;
-  //
-  //     for (const errorElement of form.getElementsByClassName('error')) {
-  //         if (errorElement.textContent?.trim() !== '') {
-  //             isValid = false;
-  //             break;
-  //         }
-  //     }
-  //
-  //     if (isValid) {
-  //         const formData = new FormData(form);
-  //         const data: Record<string, string> = {};
-  //         formData.forEach((value, key) => {
-  //             data[key] = value.toString();
-  //         });
-  //         console.log(data);
-  //         navigate('chat');
-  //         form.reset();
-  //     }
-  // };
+
+  handleSubmit = (event: Event) => {
+    event.preventDefault();
+    console.log('event.target ', event.target);
+    const form = event.target as HTMLFormElement;
+    let isValid = true;
+
+    for (const errorElement of form.getElementsByClassName('error')) {
+      if (errorElement.textContent?.trim() !== '') {
+        isValid = false;
+        break;
+      }
+    }
+    console.log('data');
+    if (isValid) {
+      const formData = new FormData(form);
+      const data: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        data[key] = value.toString();
+      });
+      console.log(data);
+      navigate('chat');
+      form.reset();
+    }
+  };
 
   override render() {
     return `
       <main class='dialog-wrapper'>
         <div class='dialog'>
-            <form class="auth-form">
+            <form class="auth-form" >
                 {{{Title}}}
                 <div class="auth-form__inputs">
                 {{{EmailInput}}}

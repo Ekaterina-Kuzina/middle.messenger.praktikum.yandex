@@ -1,4 +1,4 @@
-import { Block } from '../../../../helpers';
+import { Block, navigate } from '../../../../helpers';
 import { Avatar, Button, Input, Link } from '../../../../components';
 import { UpdateInfoPageProps } from './UpdateInfoPage.types.ts';
 
@@ -10,50 +10,57 @@ export class UpdateInfoPage extends Block {
       }),
       EmailInput: new Input({
         name: 'email',
-        title: 'Почта',
+        label: 'Почта',
         value: 'pochta@yandex.ru',
         labelLeft: true,
         className: 'profile__input',
+        type: 'email',
       }),
       LoginInput: new Input({
         name: 'login',
-        title: 'Логин',
+        label: 'Логин',
         value: 'ivanivanov',
         labelLeft: true,
         className: 'profile__input',
+        type: 'text',
       }),
       FirstName: new Input({
         name: 'first_name',
-        title: 'Имя',
+        label: 'Имя',
         value: 'Иван',
         labelLeft: true,
         className: 'profile__input',
+        type: 'text',
       }),
       SecondName: new Input({
         name: 'second_name',
-        title: 'Фамилия',
+        label: 'Фамилия',
         value: 'Иванов',
         labelLeft: true,
         className: 'profile__input',
+        type: 'text',
       }),
       DisplayName: new Input({
         name: 'display_name',
-        title: 'Имя в чате',
+        label: 'Имя в чате',
         value: 'Иван',
         labelLeft: true,
         className: 'profile__input',
+        type: 'text',
       }),
       Phone: new Input({
         name: 'phone',
-        title: 'Телефон',
+        label: 'Телефон',
         value: '+7 (909) 967 30 30',
         labelLeft: true,
         className: 'profile__input',
+        type: 'text',
       }),
       Button: new Button({
         text: 'Сохранить',
         page: 'userInfo',
         className: 'update-btn',
+        type: 'submit',
       }),
       ChangeDataLink: new Link({
         text: 'Изменить данные',
@@ -68,36 +75,36 @@ export class UpdateInfoPage extends Block {
         page: 'login',
         className: 'profile__links_red',
       }),
-      // events: {
-      //     submit: (e: Event) => {
-      //         this.handleSubmit(e);
-      //     },
-      // },
+      events: {
+        submit: (e: Event) => {
+          this.handleSubmit(e);
+        },
+      },
     });
   }
-  // handleSubmit = (event: Event) => {
-  //     event.preventDefault();
-  //     const form = event.target as HTMLFormElement;
-  //     let isValid = true;
-  //
-  //     for (const errorElement of form.getElementsByClassName('error')) {
-  //         if (errorElement.textContent?.trim() !== '') {
-  //             isValid = false;
-  //             break;
-  //         }
-  //     }
-  //
-  //     if (isValid) {
-  //         const formData = new FormData(form);
-  //         const data: Record<string, string> = {};
-  //         formData.forEach((value, key) => {
-  //             data[key] = value.toString();
-  //         });
-  //         console.log(data);
-  //         navigate('chat');
-  //         form.reset();
-  //     }
-  // };
+  handleSubmit = (event: Event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    let isValid = true;
+
+    for (const errorElement of form.getElementsByClassName('error')) {
+      if (errorElement.textContent?.trim() !== '') {
+        isValid = false;
+        break;
+      }
+    }
+
+    if (isValid) {
+      const formData = new FormData(form);
+      const data: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        data[key] = value.toString();
+      });
+      console.log(data);
+      navigate('chat');
+      form.reset();
+    }
+  };
 
   override render() {
     return `
@@ -105,7 +112,6 @@ export class UpdateInfoPage extends Block {
             <div class="profile">
                 <div class="profile__avatar">
                     {{{Avatar}}}
-<!--                    <img src="../../../assets/avatar.png" alt="Avatar" class="avatar">-->
                 </div>
         
                 <form class="update-form">

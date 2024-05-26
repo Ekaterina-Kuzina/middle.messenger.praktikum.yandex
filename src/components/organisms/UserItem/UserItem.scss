@@ -13,25 +13,18 @@
 
   &__content {
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     margin-left: 10px;
 
     &__name {
-      font-size: 14px;
-      font-weight: bold;
+      font: $font-big;
       margin-bottom: 4px;
     }
 
     &__text {
       width: 190px;
       color: $grey;
-      font-size: 14px;
-      font-weight: normal;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-
+      font: $font-small;
       span {
         color: $black;
       }
@@ -42,21 +35,21 @@
     margin-right: auto;
 
     &__date {
-      font-size: 12px;
       color: $grey;
-      font-weight: normal;
+      font: $font-small;
       margin-bottom: 20px;
     }
 
     &__counts {
-      font-size: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 25%;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: $blue;
       color: $white;
+      font: $font-regular;
     }
   }
 }

@@ -6,11 +6,15 @@ export class Button extends Block {
   constructor(props: ButtonProps) {
     super({
       text: props.text,
+      type: props.type || 'button',
       page: props.page,
+      className: props.className,
       events: {
         click: (event: Event) => {
-          event.preventDefault();
-          navigate(props.page);
+          if (props.type !== 'submit') {
+            event.preventDefault();
+            navigate(props.page);
+          }
         },
       },
     });
@@ -18,7 +22,7 @@ export class Button extends Block {
 
   override render() {
     return `
-        <button class="button{{#if className}} {{className}}{{/if}}" page="{{ page }}">
+        <button class="button{{#if className}} {{className}}{{/if}}" page="{{ page }}" type="{{ type }}">
           {{ text }}
         </button>
     `;

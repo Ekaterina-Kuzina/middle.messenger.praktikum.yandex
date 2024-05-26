@@ -7,12 +7,12 @@ export class Page404 extends Block {
     super({
       Title: new Title({
         text: 'Не туда попали',
-        className: 'error-Title',
+        className: 'error-title',
       }),
       Link: new Link({
         text: 'Назад к чатам',
         page: 'login',
-        className: 'error-Link',
+        className: 'error-link',
       }),
     });
   }

@@ -7,12 +7,12 @@ export class Page500 extends Block {
     super({
       Title: new Title({
         text: 'Мы уже фиксим',
-        className: 'error-Title',
+        className: 'error-title',
       }),
       Link: new Link({
         text: 'Назад к чатам',
         page: 'login',
-        className: 'error-Link',
+        className: 'error-link',
       }),
     });
   }

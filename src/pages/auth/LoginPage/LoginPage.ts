@@ -1,4 +1,4 @@
-import { Block } from '../../../helpers';
+import { Block, navigate } from '../../../helpers';
 import { Button, Input, Link, Title } from '../../../components';
 
 // import {navigate} from "../../../helpers/navigate";
@@ -12,55 +12,62 @@ export class LoginPage extends Block {
       }),
       LoginInput: new Input({
         name: 'login',
-        title: 'Логин',
+        label: 'Логин',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       PasswordInput: new Input({
         name: 'password',
-        title: 'Пароль',
+        label: 'Пароль',
         value: '',
         labelLeft: false,
+        type: 'text',
       }),
       Button: new Button({
         text: 'Авторизоваться',
-        page: '404',
+        page: 'chat',
+        type: 'submit',
       }),
       Link: new Link({
         text: 'Нет аккаунта?',
         page: 'signIn',
         className: 'auth-form__link',
       }),
-      // events: {
-      //     submit: (e: Event) => {
-      //         this.handleSubmit(e);
-      //     },
-      // },
+      events: {
+        submit: (e: Event) => {
+          this.handleSubmit(e);
+        },
+      },
     });
   }
-  // handleSubmit = (event: Event) => {
-  //     event.preventDefault();
-  //     const form = event.target as HTMLFormElement;
-  //     let isValid = true;
-  //
-  //     for (const errorElement of form.getElementsByClassName('error')) {
-  //         if (errorElement.textContent?.trim() !== '') {
-  //             isValid = false;
-  //             break;
-  //         }
-  //     }
-  //
-  //     if (isValid) {
-  //         const formData = new FormData(form);
-  //         const data: Record<string, string> = {};
-  //         formData.forEach((value, key) => {
-  //             data[key] = value.toString();
-  //         });
-  //         console.log(data);
-  //         navigate('chat');
-  //         form.reset();
-  //     }
-  // };
+  handleSubmit = (event: Event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    let isValid = true;
+    console.log('isValid', isValid);
+    console.log('event.target', form.getElementsByClassName('error'));
+    for (const errorElement of form.getElementsByClassName('error')) {
+      console.log('errorElement', errorElement);
+      if (errorElement.textContent?.trim() !== '') {
+        isValid = false;
+        break;
+      }
+      console.log('isValid', isValid);
+    }
+
+    if (isValid) {
+      const formData = new FormData(form);
+      const data: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        data[key] = value.toString();
+      });
+      console.log(data);
+      navigate('chat');
+      form.reset();
+    }
+  };
+
   override render() {
     return `
           <main class='dialog-wrapper'>

@@ -1,8 +1,11 @@
 export type InputProps = {
-  title: string;
-  labelLeft: boolean;
+  label: string;
   name: string;
+  labelLeft: boolean;
+  type: string;
   value: string;
   className?: string;
-  isReadonly?: boolean;
+  readonly?: 'readonly';
+  error?: string;
+  onBlur?: () => void;
 };

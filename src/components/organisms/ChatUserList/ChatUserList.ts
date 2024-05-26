@@ -13,7 +13,6 @@ export class ChatUserList extends Block {
       ProfileLink: new Link({
         page: 'userInfo',
         text: 'Профиль >',
-        // color: 'secondary',
       }),
       lists: [
         new UserItem({

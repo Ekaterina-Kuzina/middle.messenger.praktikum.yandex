@@ -1,7 +1,7 @@
 import { EventBus } from './EventBus';
-import * as Handlebars from 'handlebars';
+import Handlebars from 'handlebars';
 
-type Props = Record<string, unknown>;
+export type Props = Record<string, unknown>;
 
 type Attributes = Record<string, string>;
 
@@ -47,7 +47,9 @@ export class Block {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { events = {} as any } = this.props;
     Object.keys(events).forEach((eventName) => {
-      const inputElement = this._element?.querySelector('Input');
+      // Здесь я добавил обработку событий blur и submit так как у меня input и form обернут в div, альтернативой было напрямую переписать компоненты input и form, но я посчитал что это сломает мою папочную структуру
+
+      const inputElement = this._element?.querySelector('input');
       const formElement = this._element?.querySelector('form');
       if (inputElement && eventName === ('blur' || 'focus')) {
         inputElement.addEventListener(eventName, events[eventName]);
@@ -62,11 +64,11 @@ export class Block {
   _removeEvents() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { events = {} as any } = this.props;
-    Object.keys(events).forEach((eventName) => {
-      for (const eventListener of events[eventName]) {
-        this._element?.removeEventListener(eventName, eventListener);
-      }
-    });
+    if (events) {
+      Object.keys(events).forEach((eventName) => {
+        this._element?.removeEventListener(eventName, events[eventName]);
+      });
+    }
   }
 
   _registerEvents(eventBus: EventBus): void {
@@ -83,6 +85,7 @@ export class Block {
 
   init(): void {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
   _componentDidMount(): void {
@@ -92,6 +95,7 @@ export class Block {
     });
   }
 
+  // Может переопределять пользователь, необязательно трогать
   componentDidMount(): void {}
 
   dispatchComponentDidMount(): void {
@@ -140,7 +144,9 @@ export class Block {
     if (!nextProps) {
       return;
     }
-
+    const { children, lists } = this._getChildrenPropsAndProps(nextProps);
+    Object.assign(this.lists, lists);
+    Object.assign(this.children, children);
     Object.assign(this.props, nextProps);
   };
 
@@ -162,11 +168,13 @@ export class Block {
     const fragment = this._createDocumentElement('template');
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
-    // this._removeEvents();
+    this._removeEvents();
 
     Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
-      stub?.replaceWith(child.getContent());
+      if (stub) {
+        stub?.replaceWith(child.getContent());
+      }
     });
 
     Object.entries(this.lists).forEach(([, child]) => {
@@ -180,7 +188,9 @@ export class Block {
       });
       // fragment.content.innerHTML = listCont.content;
       const stub = fragment.content.querySelector(`[data-id="__l_${_tmpId}"]`);
-      stub?.replaceWith(listCont.content);
+      if (stub) {
+        stub?.replaceWith(listCont.content);
+      }
     });
 
     const newElement = fragment.content.firstElementChild as Node;
@@ -228,7 +238,7 @@ export class Block {
   show(): void {
     const content = this.getContent();
     if (content) {
-      content.style.display = 'block';
+      content.style.display = 'flex';
     }
   }
 

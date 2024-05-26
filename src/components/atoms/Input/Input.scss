@@ -17,4 +17,10 @@
       background-color: unset;
     }
   }
+
+  &__error {
+    color: $red;
+    font-size: 10px;
+    margin-top: 6px;
+  }
 }

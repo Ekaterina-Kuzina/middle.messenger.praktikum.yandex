@@ -36,7 +36,7 @@ export class UserItem extends Block {
         <div class='user-item__info'>
           <h3 class='user-item__info__date'>{{ date }}</h3>
           {{#if counts}}
-            <span class='user-item__info__counts'>{{ counts }}</span>
+            <div class='user-item__info__counts'>{{ counts }}</div>
           {{/if}}
         </div>
       </div>

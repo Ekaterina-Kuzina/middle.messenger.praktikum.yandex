@@ -1,4 +1,4 @@
-import { Block } from '../../../../helpers';
+import { Block, navigate } from '../../../../helpers';
 import { Avatar, Button, Input } from '../../../../components';
 import { UpdatePasswordPageProps } from './UpdatePasswordPage.types.ts';
 
@@ -10,60 +10,65 @@ export class UpdatePasswordPage extends Block {
       }),
       OldPasswordInput: new Input({
         name: 'oldPassword',
-        title: 'Старый пароль',
+        label: 'Старый пароль',
         className: 'profile__input',
-        value: '•••••••••',
+        value: 'Старый пароль',
         labelLeft: true,
+        type: 'text',
       }),
       NewPasswordInput: new Input({
         name: 'newPassword',
-        title: 'Новый пароль',
+        label: 'Новый пароль',
         className: 'profile__input',
-        value: '•••••••••',
+        value: 'Новый пароль',
         labelLeft: true,
+        type: 'text',
       }),
       RepeatNewPasswordInput: new Input({
         name: 'newPassword',
-        title: 'Повторите новый пароль',
+        label: 'Повторите новый пароль',
         className: 'profile__input',
-        value: '•••••••••',
+        value: 'Повторите новый пароль',
         labelLeft: true,
+        type: 'text',
       }),
       Button: new Button({
         text: 'Сохранить',
         page: 'userInfo',
         className: 'update-btn',
+        type: 'submit',
       }),
-      // events: {
-      //     submit: (e: Event) => {
-      //         this.handleSubmit(e);
-      //     },
-      // },
+      events: {
+        submit: (e: Event) => {
+          this.handleSubmit(e);
+        },
+      },
     });
   }
-  // handleSubmit = (event: Event) => {
-  //     event.preventDefault();
-  //     const form = event.target as HTMLFormElement;
-  //     let isValid = true;
-  //
-  //     for (const errorElement of form.getElementsByClassName('error')) {
-  //         if (errorElement.textContent?.trim() !== '') {
-  //             isValid = false;
-  //             break;
-  //         }
-  //     }
-  //
-  //     if (isValid) {
-  //         const formData = new FormData(form);
-  //         const data: Record<string, string> = {};
-  //         formData.forEach((value, key) => {
-  //             data[key] = value.toString();
-  //         });
-  //         console.log(data);
-  //         navigate('chat');
-  //         form.reset();
-  //     }
-  // };
+
+  handleSubmit = (event: Event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    let isValid = true;
+
+    for (const errorElement of form.getElementsByClassName('error')) {
+      if (errorElement.textContent?.trim() !== '') {
+        isValid = false;
+        break;
+      }
+    }
+
+    if (isValid) {
+      const formData = new FormData(form);
+      const data: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        data[key] = value.toString();
+      });
+      console.log(data);
+      navigate('chat');
+      form.reset();
+    }
+  };
 
   override render() {
     return `
@@ -71,7 +76,6 @@ export class UpdatePasswordPage extends Block {
             <div class="profile">
                 <div class="profile__avatar">
                          {{{Avatar}}}
-<!--                    <img src="assets/avatar.png" alt="Avatar" class="avatar">-->
                 </div>
         
                 <form class="update-form">
