@@ -1,0 +1,55 @@
+@import '../../../assets/variables';
+
+.user-item {
+  display: flex;
+  padding: 10px 0;
+  height: 70px;
+  border-bottom: 1px solid $lightGrey;
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+
+    &__name {
+      font: $font-big;
+      margin-bottom: 4px;
+    }
+
+    &__text {
+      width: 190px;
+      color: $grey;
+      font: $font-small;
+      span {
+        color: $black;
+      }
+    }
+  }
+
+  &__info {
+    margin-right: auto;
+
+    &__date {
+      color: $grey;
+      font: $font-small;
+      margin-bottom: 20px;
+    }
+
+    &__counts {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $blue;
+      color: $white;
+      font: $font-regular;
+    }
+  }
+}

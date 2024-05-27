@@ -1,4 +1,4 @@
-$font-family: "Inter";
+$font-family: 'Inter';
 
 $font-weight-regular: 500;
 $font-weight-semibold: 600;
@@ -10,12 +10,14 @@ $font-regular: #{$font-weight-regular} 13px/13px #{$font-family};
 $font-small: #{$font-weight-regular} 11px/11px #{$font-family};
 $font-micro: #{$font-weight-regular} 9px/9px #{$font-family};
 
-$text-bgcolor: #fff;
-$text-color: #1e1e1e;
-$text-light-color: #999;
-
-$link-color: #3369f3;
-$red-link: #ff0000;
+$white: #fff;
+$black: #1e1e1e;
+$blue: #3369f3;
+$red: #ff0000;
+$lightBlue: #e4edfd;
+$lightBackground: #fbfbfb;
+$grey: #999;
+$lightGrey: #eaeaea;
 
 %flex-wrapper {
   display: flex;
