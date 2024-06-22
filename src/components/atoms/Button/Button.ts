@@ -1,5 +1,4 @@
 import { Block } from '../../../helpers';
-import { navigate } from '../../../helpers/navigate';
 import { ButtonProps } from './Button.types';
 
 export class Button extends Block {
@@ -13,7 +12,6 @@ export class Button extends Block {
         click: (event: Event) => {
           if (props.type !== 'submit') {
             event.preventDefault();
-            navigate(props.page);
           }
         },
       },

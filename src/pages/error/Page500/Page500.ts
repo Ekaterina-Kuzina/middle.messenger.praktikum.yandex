@@ -11,7 +11,7 @@ export class Page500 extends Block {
       }),
       Link: new Link({
         text: 'Назад к чатам',
-        page: 'login',
+        page: '/messenger',
         className: 'error-link',
       }),
     });

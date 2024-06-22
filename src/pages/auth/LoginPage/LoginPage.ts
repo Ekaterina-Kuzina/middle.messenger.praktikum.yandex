@@ -1,5 +1,6 @@
-import { Block, navigate } from '../../../helpers';
+import { Block } from '../../../helpers';
 import { Button, Input, Link, Title } from '../../../components';
+import router from '../../../router.ts';
 
 // import {navigate} from "../../../helpers/navigate";
 
@@ -26,12 +27,12 @@ export class LoginPage extends Block {
       }),
       Button: new Button({
         text: 'Авторизоваться',
-        page: 'chat',
+        page: '/chat',
         type: 'submit',
       }),
       Link: new Link({
         text: 'Нет аккаунта?',
-        page: 'signIn',
+        page: '/sign-up',
         className: 'auth-form__link',
       }),
       events: {
@@ -63,7 +64,7 @@ export class LoginPage extends Block {
         data[key] = value.toString();
       });
       console.log(data);
-      navigate('chat');
+      router.go('messenger');
       form.reset();
     }
   };

@@ -65,7 +65,7 @@ export class SignInPage extends Block {
       }),
       Link: new Link({
         text: 'Войти',
-        page: 'login',
+        page: '/',
         className: 'auth-form__link',
       }),
       events: {

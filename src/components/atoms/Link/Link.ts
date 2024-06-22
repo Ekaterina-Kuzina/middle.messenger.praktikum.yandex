@@ -1,6 +1,6 @@
-import { navigate } from '../../../helpers/navigate';
 import { Block } from '../../../helpers';
 import { LinkProps } from './Link.types';
+import router from '../../../router.ts';
 
 export class Link extends Block {
   constructor(props: LinkProps) {
@@ -12,7 +12,7 @@ export class Link extends Block {
       events: {
         click: (event: Event) => {
           event.preventDefault();
-          navigate(props.page);
+          router.go(props.page);
         },
       },
     });

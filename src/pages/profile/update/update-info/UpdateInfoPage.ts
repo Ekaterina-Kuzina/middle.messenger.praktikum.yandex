@@ -1,6 +1,7 @@
-import { Block, navigate } from '../../../../helpers';
+import { Block } from '../../../../helpers';
 import { Avatar, Button, Input, Link } from '../../../../components';
 import { UpdateInfoPageProps } from './UpdateInfoPage.types.ts';
+import router from '../../../../router.ts';
 
 export class UpdateInfoPage extends Block {
   constructor(props: UpdateInfoPageProps) {
@@ -58,21 +59,21 @@ export class UpdateInfoPage extends Block {
       }),
       Button: new Button({
         text: 'Сохранить',
-        page: 'userInfo',
+        page: '/settings',
         className: 'update-btn',
         type: 'submit',
       }),
       ChangeDataLink: new Link({
         text: 'Изменить данные',
-        page: 'updateInfo',
+        page: '/edit-profile',
       }),
       ChangePasswordLink: new Link({
         text: 'Изменить пароль',
-        page: 'updatePassword',
+        page: '/edit-password',
       }),
       LogoutLink: new Link({
         text: 'Выйти',
-        page: 'login',
+        page: '/',
         className: 'profile__links_red',
       }),
       events: {
@@ -101,7 +102,7 @@ export class UpdateInfoPage extends Block {
         data[key] = value.toString();
       });
       console.log(data);
-      navigate('chat');
+      router.go('messenger');
       form.reset();
     }
   };

@@ -1,6 +1,7 @@
-import { Block, navigate } from '../../../helpers';
+import { Block } from '../../../helpers';
 import { Avatar, Input, Link } from '../../../components';
 import { UserInfoPageProps } from './UserInfoPage.types.ts';
+import router from '../../../router.ts';
 
 export class UserInfoPage extends Block {
   constructor(props: UserInfoPageProps) {
@@ -64,15 +65,15 @@ export class UserInfoPage extends Block {
       }),
       ChangeDataLink: new Link({
         text: 'Изменить данные',
-        page: 'updateInfo',
+        page: '/edit-profile',
       }),
       ChangePasswordLink: new Link({
         text: 'Изменить пароль',
-        page: 'updatePassword',
+        page: '/edit-password',
       }),
       LogoutLink: new Link({
         text: 'Выйти',
-        page: 'login',
+        page: '/',
         className: 'profile__links_red',
       }),
       events: {
@@ -101,7 +102,7 @@ export class UserInfoPage extends Block {
         data[key] = value.toString();
       });
       console.log(data);
-      navigate('chat');
+      router.go('messenger');
       form.reset();
     }
   };

@@ -1,6 +1,7 @@
-import { Block, navigate } from '../../../../helpers';
+import { Block } from '../../../../helpers';
 import { Avatar, Button, Input } from '../../../../components';
 import { UpdatePasswordPageProps } from './UpdatePasswordPage.types.ts';
+import router from '../../../../router.ts';
 
 export class UpdatePasswordPage extends Block {
   constructor(props: UpdatePasswordPageProps) {
@@ -34,7 +35,7 @@ export class UpdatePasswordPage extends Block {
       }),
       Button: new Button({
         text: 'Сохранить',
-        page: 'userInfo',
+        page: '/settings',
         className: 'update-btn',
         type: 'submit',
       }),
@@ -65,7 +66,7 @@ export class UpdatePasswordPage extends Block {
         data[key] = value.toString();
       });
       console.log(data);
-      navigate('chat');
+      router.go('messenger');
       form.reset();
     }
   };
