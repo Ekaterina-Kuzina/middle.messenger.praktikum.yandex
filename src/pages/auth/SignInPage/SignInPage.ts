@@ -1,6 +1,8 @@
 import { Block } from '../../../helpers';
 import { Button, Input, Link, Title } from '../../../components';
-import { navigate } from '../../../helpers/navigate.ts';
+import router from '../../../router.ts';
+import { UserController } from '../../../controllers';
+import { RegisterData } from '../../../api';
 
 export class SignInPage extends Block {
   constructor() {
@@ -77,6 +79,7 @@ export class SignInPage extends Block {
   }
 
   handleSubmit = (event: Event) => {
+    const userController = new UserController();
     event.preventDefault();
     console.log('event.target ', event.target);
     const form = event.target as HTMLFormElement;
@@ -96,7 +99,15 @@ export class SignInPage extends Block {
         data[key] = value.toString();
       });
       console.log(data);
-      navigate('chat');
+      userController.signUp(data as RegisterData).then((response) => {
+        if (response instanceof XMLHttpRequest && response.status === 200) {
+          router.go('/messenger');
+          form.reset();
+        } else {
+          alert('Возникла ошибка');
+        }
+      });
+      router.go('messenger');
       form.reset();
     }
   };

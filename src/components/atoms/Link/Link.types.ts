@@ -3,4 +3,5 @@ export type LinkProps = {
   text: string;
   page: string;
   className?: string;
+  events?: unknown;
 };

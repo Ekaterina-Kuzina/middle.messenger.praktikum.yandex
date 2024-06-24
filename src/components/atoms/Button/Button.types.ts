@@ -1,6 +1,7 @@
 export interface ButtonProps {
   text: string;
-  page: string;
+  page?: string;
   className?: string;
   type?: string;
+  events?: unknown;
 }

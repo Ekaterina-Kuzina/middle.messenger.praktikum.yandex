@@ -6,15 +6,14 @@ export class Link extends Block {
   constructor(props: LinkProps) {
     super({
       href: props.href || '#',
-      text: props.text,
-      page: props.page,
-      className: props.className,
       events: {
         click: (event: Event) => {
           event.preventDefault();
+          console.log('props', props.page);
           router.go(props.page);
         },
       },
+      ...props,
     });
   }
 

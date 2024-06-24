@@ -4,7 +4,6 @@ import { ButtonProps } from './Button.types';
 export class Button extends Block {
   constructor(props: ButtonProps) {
     super({
-      text: props.text,
       type: props.type || 'button',
       page: props.page,
       className: props.className,
@@ -15,6 +14,7 @@ export class Button extends Block {
           }
         },
       },
+      ...props,
     });
   }
 

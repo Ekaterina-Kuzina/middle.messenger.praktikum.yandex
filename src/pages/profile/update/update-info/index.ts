@@ -1,3 +1,3 @@
 import '../update.scss';
 
-export { UpdateInfoPage } from './UpdateInfoPage';
+export { default as UpdateInfoPage } from './UpdateInfoPage';

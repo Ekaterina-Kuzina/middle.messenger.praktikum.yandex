@@ -1,7 +1,7 @@
+import { renderDOM, isEqual } from './utils.ts';
 import { Block } from './Block.ts';
-import { isEqual, renderDOM } from './utils.ts';
 
-class Route {
+export class Route {
   private _pathname: string;
   private _blockClass: typeof Block;
   private _block: Block | null;
@@ -39,5 +39,3 @@ class Route {
     this._block.show();
   }
 }
-
-export default Route;

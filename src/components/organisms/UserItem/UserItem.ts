@@ -2,12 +2,15 @@ import { Block } from '../../../helpers';
 import { Avatar } from '../../atoms';
 
 type UserItemProps = {
+  id: number;
   self?: boolean;
   name: string;
   text: string;
   date: string;
   counts: number;
   src?: string;
+  events: unknown;
+  isActive: boolean;
 };
 
 export class UserItem extends Block {

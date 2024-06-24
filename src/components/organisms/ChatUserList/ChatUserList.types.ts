@@ -1,3 +1,6 @@
+import { UserItem } from '../UserItem';
+
 export type ChatUserListProps = {
-  value: string;
+  handleAddChat: () => unknown;
+  ChatsComponent: UserItem[];
 };

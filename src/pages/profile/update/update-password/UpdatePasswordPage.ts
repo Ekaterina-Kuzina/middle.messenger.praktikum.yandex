@@ -1,19 +1,21 @@
 import { Block } from '../../../../helpers';
-import { Avatar, Button, Input } from '../../../../components';
-import { UpdatePasswordPageProps } from './UpdatePasswordPage.types.ts';
+import { Avatar, Button, Input, Link } from '../../../../components';
 import router from '../../../../router.ts';
+import { PasswordsData } from '../../../../api';
+import { UserController } from '../../../../controllers';
 
 export class UpdatePasswordPage extends Block {
-  constructor(props: UpdatePasswordPageProps) {
+  constructor() {
     super({
+      isVisible: true,
       Avatar: new Avatar({
-        src: props.src || '',
+        src: '',
       }),
       OldPasswordInput: new Input({
         name: 'oldPassword',
         label: 'Старый пароль',
         className: 'profile__input',
-        value: 'Старый пароль',
+        value: '',
         labelLeft: true,
         type: 'text',
       }),
@@ -21,7 +23,7 @@ export class UpdatePasswordPage extends Block {
         name: 'newPassword',
         label: 'Новый пароль',
         className: 'profile__input',
-        value: 'Новый пароль',
+        value: '',
         labelLeft: true,
         type: 'text',
       }),
@@ -29,7 +31,7 @@ export class UpdatePasswordPage extends Block {
         name: 'newPassword',
         label: 'Повторите новый пароль',
         className: 'profile__input',
-        value: 'Повторите новый пароль',
+        value: '',
         labelLeft: true,
         type: 'text',
       }),
@@ -38,6 +40,10 @@ export class UpdatePasswordPage extends Block {
         page: '/settings',
         className: 'update-btn',
         type: 'submit',
+      }),
+      BackLink: new Link({
+        text: 'Назад в профиль',
+        page: '/settings',
       }),
       events: {
         submit: (e: Event) => {
@@ -49,8 +55,14 @@ export class UpdatePasswordPage extends Block {
 
   handleSubmit = (event: Event) => {
     event.preventDefault();
+    const userController = new UserController();
     const form = event.target as HTMLFormElement;
     let isValid = true;
+
+    for (const inputElement of form.getElementsByTagName('input')) {
+      inputElement.focus();
+      inputElement.blur();
+    }
 
     for (const errorElement of form.getElementsByClassName('error')) {
       if (errorElement.textContent?.trim() !== '') {
@@ -65,15 +77,30 @@ export class UpdatePasswordPage extends Block {
       formData.forEach((value, key) => {
         data[key] = value.toString();
       });
-      console.log(data);
-      router.go('messenger');
-      form.reset();
+      userController.editPassword(data as PasswordsData).then((response) => {
+        if (response instanceof XMLHttpRequest && response.status === 200) {
+          router.go('/messenger');
+          form.reset();
+        } else {
+          alert('Возникла ошибка');
+        }
+      });
     }
   };
 
+  hide() {
+    super.hide();
+    this.setProps({ isVisible: false });
+  }
+
+  show() {
+    super.show();
+    this.setProps({ isVisible: true });
+  }
+
   override render() {
     return `
-        <main class="profile-wrapper">
+        <main class="profile-wrapper" {{#if isVisible}} style='display: flex;' {{else}} style='display: none;' {{/if}}>
             <div class="profile">
                 <div class="profile__avatar">
                          {{{Avatar}}}
@@ -89,6 +116,9 @@ export class UpdatePasswordPage extends Block {
                         {{{ Button }}}
                     </div>
                 </form>
+                 <div class="profile__links">
+                    {{{BackLink}}}
+                </div>
             </div>
         </main>
     `;

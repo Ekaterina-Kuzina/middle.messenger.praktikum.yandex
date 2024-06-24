@@ -1,4 +1,4 @@
-import Route from './Route.ts';
+import { Route } from './Route.ts';
 import { Block } from './Block.ts';
 
 export class Router {
