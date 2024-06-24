@@ -11,7 +11,7 @@
     "dev": "vite",
     "prebuild": "tsc --noEmit",
     "build": "vite build",
-    "start": "vite build && node server.cjs",
+    "start": "vite build && node server.js",
     "preview": "vite preview"
   },
   "devDependencies": {
