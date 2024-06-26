@@ -124,10 +124,12 @@ class UserInfoPage extends Block {
         <main class="profile-wrapper" {{#if isVisible}} style='display: flex;' {{else}} style='display: none;' {{/if}}>
             <div class="profile">
                 <div class="profile__avatar">
+                  <div class="profile__avatar-wrapper">
                     {{{AvatarComponent}}}
-                    <p class="name">
+                     <p class="name">
                         {{first_name}}
-                    </p>
+                     </p>
+                  </div>
                 </div>
                 <div class="profile__info">
                     {{{EmailInput}}}

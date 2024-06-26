@@ -58,7 +58,7 @@ export const connectWS = async (userId: number, chatId: number) => {
         store.set('messages', [data, ...messages]);
       }
     } catch (error) {
-      throw new Error('Невалидные данные сообщений');
+      console.error('Невалидные данные сообщений');
     }
   });
 

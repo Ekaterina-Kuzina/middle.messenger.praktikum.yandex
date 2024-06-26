@@ -3,7 +3,11 @@ import { Block, Chat, connect, connectWS } from '../../../helpers';
 import { Button, Link, SearchInput } from '../../atoms';
 import store from '../../../helpers/Store.ts';
 import { ChatController } from '../../../controllers';
-import { ChatUserListProps } from './ChatUserList.types.ts';
+
+type ChatUserListProps = {
+  handleAddChat: () => unknown;
+  ChatsComponent: UserItem[];
+};
 
 class ChatUserList extends Block {
   constructor(props: ChatUserListProps) {

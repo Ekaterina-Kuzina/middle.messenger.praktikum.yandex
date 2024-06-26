@@ -88,9 +88,11 @@ class UpdateInfoPage extends Block {
         <main class="profile-wrapper" {{#if isVisible}} style='display: flex;' {{else}} style='display: none;' {{/if}}>
             <div class="profile">
                 <div class="profile__avatar">
+                  <div class="profile__avatar-wrapper">
                     {{{AvatarComponent}}}
+                    </div>
                 </div>
-        
+
                 <form class="update-form">
                     <div class="profile__info">
                             {{{EmailInput}}}
