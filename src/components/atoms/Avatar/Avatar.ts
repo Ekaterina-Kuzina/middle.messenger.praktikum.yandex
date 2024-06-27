@@ -2,12 +2,18 @@ import { Block } from '../../../helpers';
 
 type AvatarProps = {
   src: string;
+  events?: unknown;
 };
 
 export class Avatar extends Block {
   constructor(props: AvatarProps) {
     super({
-      src: props.src,
+      events: {
+        click: (event: Event) => {
+          event.preventDefault();
+        },
+      },
+      ...props,
     });
   }
   override render() {

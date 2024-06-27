@@ -1,11 +1,13 @@
-import { Block, navigate } from '../../../helpers';
+import { Block } from '../../../helpers';
 import { Button, Input, Link, Title } from '../../../components';
-
-// import {navigate} from "../../../helpers/navigate";
+import router from '../../../router.ts';
+import { LoginData } from '../../../api/AuthApi.ts';
+import { UserController } from '../../../controllers';
 
 export class LoginPage extends Block {
   constructor() {
     super({
+      isVisible: true,
       Title: new Title({
         text: 'Вход',
         className: 'auth-form__title',
@@ -26,12 +28,12 @@ export class LoginPage extends Block {
       }),
       Button: new Button({
         text: 'Авторизоваться',
-        page: 'chat',
+        page: '/chat',
         type: 'submit',
       }),
       Link: new Link({
         text: 'Нет аккаунта?',
-        page: 'signIn',
+        page: '/sign-up',
         className: 'auth-form__link',
       }),
       events: {
@@ -40,13 +42,32 @@ export class LoginPage extends Block {
         },
       },
     });
+    const userController = new UserController();
+    userController.getUser().then((response) => {
+      if (response instanceof XMLHttpRequest && response.status === 200) {
+        router.go('/messenger');
+      }
+    });
   }
+
+  componentDidMount() {
+    const userController = new UserController();
+    console.log('userController', userController);
+    userController.getUser().then((response) => {
+      if (response instanceof XMLHttpRequest && response.status === 200) {
+        router.go('/messenger');
+      }
+    });
+  }
+
   handleSubmit = (event: Event) => {
+    const userController = new UserController();
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     let isValid = true;
     console.log('isValid', isValid);
     console.log('event.target', form.getElementsByClassName('error'));
+
     for (const errorElement of form.getElementsByClassName('error')) {
       console.log('errorElement', errorElement);
       if (errorElement.textContent?.trim() !== '') {
@@ -62,9 +83,14 @@ export class LoginPage extends Block {
       formData.forEach((value, key) => {
         data[key] = value.toString();
       });
-      console.log(data);
-      navigate('chat');
-      form.reset();
+      userController.signIn(data as LoginData).then((response) => {
+        if (response instanceof XMLHttpRequest && response.status === 200) {
+          router.go('/messenger');
+          form.reset();
+        } else {
+          alert('Возникла ошибка');
+        }
+      });
     }
   };
 

@@ -1,2 +1,2 @@
 import './ChatUserList.scss';
-export { ChatUserList } from './ChatUserList.ts';
+export { default as ChatUserList } from './ChatUserList.ts';

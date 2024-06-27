@@ -1,3 +1,3 @@
 import '../profile.scss';
 
-export { UserInfoPage } from './UserInfoPage';
+export { default as UserInfoPage } from './UserInfoPage';

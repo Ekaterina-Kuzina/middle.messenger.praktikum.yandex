@@ -13,11 +13,11 @@
 
   &__content {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     margin-left: 10px;
 
     &__name {
-      font: $font-big;
+      font: $font-regular;
       margin-bottom: 4px;
     }
 
@@ -25,6 +25,8 @@
       width: 190px;
       color: $grey;
       font: $font-small;
+      overflow: hidden;
+
       span {
         color: $black;
       }
@@ -41,15 +43,14 @@
     }
 
     &__counts {
+      font-size: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 20px;
-      height: 20px;
+      padding: 25%;
       border-radius: 50%;
       background: $blue;
       color: $white;
-      font: $font-regular;
     }
   }
 }
