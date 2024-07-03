@@ -2,7 +2,7 @@ import { renderDOM, isEqual } from './utils.ts';
 import { Block } from './Block.ts';
 
 export class Route {
-  private _pathname: string;
+  public _pathname: string;
   private _blockClass: typeof Block;
   private _block: Block | null;
 
