@@ -2,9 +2,9 @@ import { Route } from './Route.ts';
 import { Block } from './Block.ts';
 
 export class Router {
-  private routes: Route[] = [];
+  public routes: Route[] = [];
   private history!: History;
-  private _currentRoute: Route | null = null;
+  public _currentRoute: Route | null = null;
   private static __instance: Router | null;
 
   constructor() {

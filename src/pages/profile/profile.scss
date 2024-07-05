@@ -1,7 +1,9 @@
+/* stylelint-disable-next-line */
 @import '../../assets/variables';
 
 .profile-wrapper {
   @extend %flex-wrapper;
+
   justify-self: center;
 }
 
@@ -11,6 +13,7 @@
   align-items: center;
   flex-direction: column;
   width: 500px;
+  /* stylelint-disable-next-line */
   align-content: space-between;
   gap: 60px;
 
@@ -24,6 +27,7 @@
       width: 150px;
       height: 150px;
     }
+
     .name {
       font: $font-big;
       text-align: center;
@@ -50,6 +54,7 @@
       border-bottom: 1px solid $blue;
       font: inherit;
       color: $grey;
+
       &:focus {
         outline: none;
         background-color: unset;
