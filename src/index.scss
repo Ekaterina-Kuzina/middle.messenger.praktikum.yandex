@@ -1,3 +1,4 @@
+/* stylelint-disable-next-line */
 @import './assets/variables.scss';
 
 * {
@@ -45,6 +46,7 @@ button {
 .dialog-wrapper {
   @extend %flex-wrapper;
 }
+
 .dialog {
   width: 340px;
   padding: 50px 30px 30px;

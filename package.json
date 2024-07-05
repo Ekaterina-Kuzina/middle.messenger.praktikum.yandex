@@ -15,8 +15,9 @@
     "preview": "vite preview",
     "test": "mocha --es-module-specifier-resolution=node",
     "prepare": "husky install",
-    "pre-commit": "npm run lint:ts && npm run test",
-    "lint:ts": "eslint . --ext .ts,.js"
+    "lint:ts": "eslint . --ext .ts,.js",
+    "lint:css": "stylelint \"**/*.scss\"",
+    "pre-commit": "npm run lint:ts && npm run lint:css && npm run test"
   },
   "husky": {
     "hooks": {
@@ -54,6 +55,8 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.8",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-scss": "^6.2.1"
   }
 }
